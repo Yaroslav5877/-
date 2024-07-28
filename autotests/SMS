@@ -1,0 +1,67 @@
+import requests
+import time
+
+def get_temp_phone_number():
+    url = "https://receive-smss.com/"
+    response = requests.get(url)
+    response.raise_for_status()
+    phone_numbers = response.json()
+    # Берем первый номер из списка
+    return phone_numbers[0]['number'], phone_numbers[0]['id']
+
+def request_code(phone_number):
+    url = "https://web-gate.chitai-gorod.ru/api/v2/auth/request"
+    headers = {
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json"
+    }
+    data = {
+        "phone": phone_number
+    }
+    response = requests.post(url, headers=headers, json=data)
+    response.raise_for_status()
+    print("SMS code requested")
+    return response.json()
+
+def get_sms_code(phone_id):
+    url = f"https://receive-smss.com/sms/{phone_id}/"
+    headers = {
+        "accept": "application/json"
+    }
+    # Ожидание получения SMS (можно настроить тайм-аут)
+    time.sleep(60)
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    messages = response.json()
+    # Парсинг SMS для получения кода
+    for message in messages:
+        if "ваш код" in message['text'].lower():
+            return message['text'].split()[-1]
+    return None
+
+def confirm_code(phone_number, code):
+    url = "https://web-gate.chitai-gorod.ru/api/v2/auth/confirm"
+    headers = {
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json"
+    }
+    data = {
+        "phone": phone_number,
+        "code": code
+    }
+    response = requests.post(url, headers=headers, json=data)
+    response.raise_for_status()
+    token = response.json().get("access_token")
+    print(f"Access Token: {token}")
+    return token
+
+def authenticate():
+    phone_number, phone_id = get_temp_phone_number()
+    request_code(phone_number)
+    code = get_sms_code(phone_id)
+    if not code:
+        raise Exception("Failed to receive SMS code")
+    return confirm_code(phone_number, code)
+
+# Пример использования
+token = authenticate()

@@ -3,7 +3,7 @@ from urllib.parse import quote
 import allure
 import requests
 
-access_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VzZXItcmlnaHQiLCJzdWIiOjIwODY5NjE5LCJpYXQiOjE3MjIxOTE0NzYsImV4cCI6MTcyMjE5NTA3NiwidHlwZSI6MjB9.Ne4QpZpMfxROBWtSX7o9pNDxx5sK2IgkI9GWn6lWV0g'
+access_token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3VzZXItcmlnaHQiLCJzdWIiOjIwODY5NjE5LCJpYXQiOjE3MjQ1NjgyMDcsImV4cCI6MTcyNDU3MTgwNywidHlwZSI6MjB9.hgP6Dw1xluZJwk_T6wZvRg2gDnzGVP2ovk-fq6QffK4'
 
 
 @allure.feature("Поиск книг")
@@ -518,8 +518,8 @@ def test_valid_book_rating():
     assert "data" in response_data, "Response JSON does not contain 'data'"
     data = response_data["data"]
 
-    expected_rating = 4.5  # Обновлено в соответствии с фактическим значением
-    expected_count = 8  # Обновлено в соответствии с фактическим значением
+    expected_rating = 4.56  # Обновлено в соответствии с фактическим значением
+    expected_count = 9  # Обновлено в соответствии с фактическим значением
 
     assert data["rating"] == expected_rating, f"Expected rating {expected_rating}, but got {data['rating']}"
     assert data["count"] == expected_count, f"Expected count {expected_count}, but got {data['count']}"

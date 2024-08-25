@@ -1,3 +1,0 @@
-Response status code: 200
-Response headers: {'Server': 'ddos-guard', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=60', 'Set-Cookie': '__ddg1_=2ki7an2ysbdo17gb9wIF; Domain=.chitai-gorod.ru; HttpOnly; Path=/; Expires=Mon, 28-Jul-2025 18:33:33 GMT', 'date': 'Sun, 28 Jul 2024 18:33:33 GMT', 'content-type': 'application/json', 'x-request-id': 'd73468e92ac9a338fae4031e62da3bf5,d73468e92ac9a338fae4031e62da3bf5', 'x-envoy-upstream-service-time': '95', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Transfer-Encoding': 'chunked'}
-Response content: {"data":{"count":9,"rating":4.56}}

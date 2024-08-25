@@ -1,3 +1,0 @@
-Response status code: 401
-Response headers: {'Server': 'ddos-guard', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=60', 'Set-Cookie': '__ddg1_=ucj9sz6mWeyXsDuQqzJG; Domain=.chitai-gorod.ru; HttpOnly; Path=/; Expires=Mon, 28-Jul-2025 18:24:01 GMT', 'date': 'Sun, 28 Jul 2024 18:24:01 GMT', 'content-type': 'application/json', 'x-request-id': 'dc167e44233d4fb71cb0f7d986423776', 'x-envoy-upstream-service-time': '1', 'Content-Encoding': 'gzip', 'Vary': 'Accept-Encoding', 'Transfer-Encoding': 'chunked'}
-Response content: {"message":"JWTTokenMiddleware: parsing token error: token is expired by 26m12s","requestId":"dc167e44233d4fb71cb0f7d986423776"}
